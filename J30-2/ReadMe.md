@@ -3,11 +3,13 @@
 
 
 # 需要的CSS知识
-![CSS部分](CSS部分-核心点.png)
+![CSS部分-核心点.png](https://upload-images.jianshu.io/upload_images/2195446-cb8af42b621d05c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 
 # 需要的JS知识
-![JS部分](JS部分.png)
+![JS部分.png](https://upload-images.jianshu.io/upload_images/2195446-58c703340aa28083.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 
 

@@ -1,5 +1,6 @@
 # 实现效果
-[]()
+![时钟](https://upload-images.jianshu.io/upload_images/2195446-6fd0e9818d8af67f.gif?imageMogr2/auto-orient/strip)
+[在线效果](https://1643565650.github.io/Learning-By-Doing/J30-2%20CSS%E6%97%B6%E9%92%9F/CSS%E6%97%B6%E9%92%9F.html)
 
 
 # 需要的CSS知识

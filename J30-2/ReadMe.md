@@ -3,11 +3,11 @@
 
 
 # 需要的CSS知识
-![CSS部分](/CSS部分-核心点.png)
+![CSS部分](CSS部分-核心点.png)
 
 
 # 需要的JS知识
-![JS部分](/JS部分.png)
+![JS部分](JS部分.png)
 
 
 

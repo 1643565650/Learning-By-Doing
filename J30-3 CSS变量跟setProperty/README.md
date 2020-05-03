@@ -13,25 +13,6 @@
 ![](https://upload-images.jianshu.io/upload_images/2195446-503dd3db58ad8878.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-1.   对根目录:root设置三个CSS变量，分别对应颜色，内边距和模糊程度；
-
-2.   然后让image的background，padding和filter:blur()，通过var调用上面的这三个CSS变量（延展blur概念，问题：颜色部分是让谁来调用？问题：模糊部分是谁来调用CSS变量）形成了页面的默认渲染。
-
-3.   找到三个input，通过forEach遍历它们，对它们实施'change'和'mousemove'监听（change是为了监听颜色，mousemove是为了监听padding和blur）
-
-4.   设置监听函数，通过document.documentElement.style.setProperty(`--${this.name}`, this.value)，找到根元素中的CSS变量（例如--base），然后将input中的value传递过去改变这个变量（这里需要input中的name跟CSS变量去除--后是相同的，这样才能找到CSS变量）
-
-5.   这时发现没有效果，例如padding:10是没有效果的，比如要有px才行
-
-6.   通过this.dateset.sizing读取input中的数据属性data-sizing，得到px，然后赋值给自定义常量（例如suffix）后，在this.value + suffix，数值后面就跟上了px，image的padding和blur就能够变化（因为image调用了根目录的CSS变量）
-
-7.   发现问题，改变颜色区域的input时，边框消失。这是因为当input的type为color时，它的value是颜色代码，不是数字，这部分input中也没有设置data-sizing，所以找不到suffix，返回undefined，而undefined加上颜色部分的this.value（颜色代码，typeof后发现是字符串），就会生成
-    ![image.png](https://upload-images.jianshu.io/upload_images/2195446-77d37f0f9b2e294f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
- 导致边框消失
-
-8.   解决这个问题：让suffix = this.dateset.sizing || ''     颜色字符串加上'' 不影响颜色读取
-
-
 
 ## 问题
 1.颜色部分是让谁来调用？  

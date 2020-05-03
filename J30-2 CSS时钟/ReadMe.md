@@ -26,26 +26,24 @@
 
 # 问题
 
-1. 指针不是围绕着钟表的中心转动的
+1. 指针不是围绕着钟表的中心转动的  
 答：需要设置原点，transition-origin:100%
-  - 补充
-    为什么要设置为100%？
-    答：指针只是一条线，所以直接设置为100%，原点就设置为最右边
-![Image.png](https://upload-images.jianshu.io/upload_images/2195446-1757d68ddf5eb9cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-![mdn](https://upload-images.jianshu.io/upload_images/2195446-fb1fc0774fabcf95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+  - 为什么要设置为100%？  
+  答：指针只是一条线，所以直接设置为100%，原点就设置为最右边  
+  ![Image.png](https://upload-images.jianshu.io/upload_images/2195446-1757d68ddf5eb9cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
+  ![mdn](https://upload-images.jianshu.io/upload_images/2195446-fb1fc0774fabcf95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 
-2. 秒数指针到12点时，旋转角度为什么突然变回90deg。
+2. 秒数指针到12点时，旋转角度为什么突然变回90deg。  
 答：秒是从0到59，到了59以后又变成了0，`const secondDegrees = (seconds / 60 * 360) + 90`，当秒数为0时，所以角度就会重新回到90deg
 
 
-3. 秒针过12点时，时针会突然倒退一下，这是什么问题？
+3. 秒针过12点时，时针会突然倒退一下，这是什么问题？  
 答：我在计算时针的角度时，将秒针和分针所带来的角度都添加到了时针中，而秒针每到12点时，角度会从400多度一下降回90度，所以时针受到影响，就会减少秒针带来的那一部分的角度，后跳了一下。
 
 
-4. 指针跳转时如何产生微小晃动？
+4. 指针跳转时如何产生微小晃动？  
 答：设置transition-timing-function，在开发者工具中设置cubic-bzzier手动调整
 
 

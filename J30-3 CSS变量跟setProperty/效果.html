@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scoped CSS Variables and JS</title>
+</head>
+<body>
+  <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
+
+  <div class="controls">
+    <label for="spacing">Spacing:</label>
+    <input id="spacing" type="range" name="paddin" min="10" max="200" value='10'  data-sizing="px">
+    <!-- 这里的value的作用是指定input的默认值，滑竿中那个选择器的默认位置 -->
+    <label for="blur">Blur:</label>
+    <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+<!-- 注意padding和blur部分range的最大最小值不同，这会决定它们在滑竿上的位置 -->
+    <label for="base">Base Color</label>
+    <input id="base" type="color" name="base" value="#ffc600">
+  </div>
+
+  <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
+
+  <style>
+    :root {
+      --base:#ffc600;
+      --paddin:10px;
+      --blur:10px;
+    }
+
+    img {
+      background:var(--base);
+      padding:var(--paddin);
+      filter:blur(var(--blur))
+    }
+
+
+    span {
+      color: var(--base);
+    }
+
+    /*
+      misc styles, nothing to do with CSS variables
+    */
+
+    body {
+      text-align: center;
+      background: #193549;
+      color: white;
+      font-family: 'helvetica neue', sans-serif;
+      font-weight: 100;
+      font-size: 50px;
+    }
+
+    .controls {
+      margin-bottom: 50px;
+    }
+
+    input {
+      width: 100px;
+    }
+  </style>
+
+  <script>
+    const inputs = document.querySelectorAll('input');
+
+    function inputChange() {//这个是mouseEvent,而这个mouseEvent所在的环境this是我hover的那个input
+      // console.log(this)
+      // console.log(this.dataset)
+      // console.log(MouseEvent)
+      // console.log(`--this.name` ,  `--${this.name}`)
+      // console.log(`this.name` , this.name)
+      //这里的this就代表着鼠标hover那部分的input
+      const suffix = this.dataset.sizing || '';
+      console.log(suffix);
+      console.log(typeof(this.value))
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+      //setProperty找到:root中的属性，然后通过第二个参数this.value改变它们，又因为input的CSS部分是通过调用CSS变量获得的，所以会随之改变
+    }
+
+    inputs.forEach(function fe(input) {input.addEventListener('change', inputChange)});//需要return吗？试了就知道
+    inputs.forEach(function fe(input) {input.addEventListener('mousemove', inputChange)});//答：不需要，只要发生了监听事件，就会执行函数
+    // input => {input.addEventListener('change', inputChange)}
+    //用普通函数，绑定函数的this也还是input
+
+
+
+//   function spaceChange(e) {
+//     const suffix = inputSpacing.dataset.sizing || '';//dataset读取数据属性，为了避免读取错误，加上或空字符串
+//     // document.documentElement.style.setProperty(`--${this.name}`, `${this.value}px`);//将原来的input的name变成CSS变量
+//     document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+//   }
+//   const inputSpacing = document.querySelector('#spacing');
+//   inputSpacing.addEventListener('mousemove', spaceChange);
+
+
+
+//  function blurChange(e) {
+//       const suffix = inputBlur.dataset.sizing || '';
+//       document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+//  }
+
+//   const inputBlur = document.querySelector('#blur');
+//   inputBlur.addEventListener('mousemove', blurChange);
+
+
+
+// function baseChange(e) {
+//       document.documentElement.style.setProperty(`--${this.name}`, this.value);
+// }
+
+//   const inputBase = document.querySelector('#base');
+//   inputBase.addEventListener('change', baseChange);
+
+  </script>
+
+</body>
+</html>

@@ -71,7 +71,6 @@
       // console.log(`this.name` , this.name)
       //这里的this就代表着鼠标hover那部分的input
       const suffix = this.dataset.sizing || '';
-      console.log(suffix);
       console.log(typeof(this.value))
       document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
       //setProperty找到:root中的属性，然后通过第二个参数this.value改变它们，又因为input的CSS部分是通过调用CSS变量获得的，所以会随之改变

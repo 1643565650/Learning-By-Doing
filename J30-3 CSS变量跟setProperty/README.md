@@ -3,12 +3,15 @@
 
 
 
-## 需要的知识
+## 前置知识
 ![](https://upload-images.jianshu.io/upload_images/2195446-a771fd997b2b5779.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 
 ## 思路：
+
+![](https://upload-images.jianshu.io/upload_images/2195446-503dd3db58ad8878.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 1.   对根目录:root设置三个CSS变量，分别对应颜色，内边距和模糊程度；
 

@@ -16,8 +16,7 @@
 
 ## 问题
 1.颜色部分是让谁来调用？  
-答：是background。为什么是background？
-
+答：是background。
 2.模糊部分是谁来调用CSS变量  
 答：![filter](https://upload-images.jianshu.io/upload_images/2195446-bdba717d77356940.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 

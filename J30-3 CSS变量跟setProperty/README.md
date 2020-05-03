@@ -85,3 +85,19 @@ Array有很多方法
 
 
 
+## 需要的HTML知识
+1.点击label就会关联到input，两种方式 
+
+第一种：给input一个 id 属性。而label需要一个 for 属性，其值和 input 的 id 一样
+ ![](https://upload-images.jianshu.io/upload_images/2195446-6693b22b7aa15073.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) 
+
+第二种： 将input 直接放在label里，这种情况就不需要 for 和 id 属性了，因为这时关联是隐含的![](https://upload-images.jianshu.io/upload_images/2195446-c66c0f484b924391.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+2.input的type类型
+- 默认为text
+- color
+- range
+![](https://upload-images.jianshu.io/upload_images/2195446-6503bc602eaf4dfc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://upload-images.jianshu.io/upload_images/2195446-d9c05e398fe17301.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://upload-images.jianshu.io/upload_images/2195446-aed295215efb73ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)

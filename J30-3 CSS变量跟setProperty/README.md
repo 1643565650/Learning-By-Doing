@@ -1,17 +1,19 @@
+
 ## 实现效果
 ![效果](https://upload-images.jianshu.io/upload_images/2195446-590069226dcf0058.gif?imageMogr2/auto-orient/strip)
 
 [在线浏览]()
 
 ## 需要的HTML知识
-1. 点击label就会关联到input，两种方式
-第一种：给 <input> 一个 id 属性。而 <label> 需要一个 for 属性，其值和 input 的 id 一样
- ![](https://upload-images.jianshu.io/upload_images/2195446-6693b22b7aa15073.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-第二种： 将 <input> 直接放在 <label> 里，这种情况就不需要 for 和 id 属性了，因为这时关联是隐含的
-![](https://upload-images.jianshu.io/upload_images/2195446-c66c0f484b924391.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+1.点击label就会关联到input，两种方式 
+
+第一种：给input一个 id 属性。而label需要一个 for 属性，其值和 input 的 id 一样
+ ![](https://upload-images.jianshu.io/upload_images/2195446-6693b22b7aa15073.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) 
+
+第二种： 将input 直接放在label里，这种情况就不需要 for 和 id 属性了，因为这时关联是隐含的![](https://upload-images.jianshu.io/upload_images/2195446-c66c0f484b924391.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-2. input的type类型
+2.input的type类型
 - 默认为text
 - color
 - range
@@ -21,8 +23,10 @@
 
 
 ## 需要的CSS知识
-1.  :root
-:root 这个 CSS 伪类匹配文档树的根元素。对于 HTML 来说，:root 表示 <html> 元素，除了优先级更高之外，与 html 选择器相同。
+
+1.:root
+
+- :root 这个 CSS 伪类匹配文档树的根元素。对于 HTML 来说，:root 表示 <html> 元素，除了优先级更高之外，与 html 选择器相同。
 
 2.CSS变量
   - 带有前缀--的属性名，比如--example--name
@@ -33,20 +37,25 @@
 
 
 
-##需要的JS知识
-1. change事件
+## 需要的JS知识
+
+1.change事件
 - 用户提交元素更改时，被<input>, <select>, 和<textarea> 元素触发
 -  不一定对元素之的每次更改触发
 
-2. mousemove
+2.mousemove
  - 随着移动input产生不同的value
+
 ![](https://upload-images.jianshu.io/upload_images/2195446-cade476eb95883e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 3.setProperty
 - propertyName:通过CSS属性名找到即将被改变的CSS属性
 - value:代表赋予第一个参数的属性值
 - priority表示优先级
-- 格式：style.setProperty()![setProperty和CSS变量运用.gif](https://upload-images.jianshu.io/upload_images/2195446-8f31214a1a39bbd0.gif?imageMogr2/auto-orient/strip)
+- 格式：style.setProperty()
+
+![setProperty和CSS变量运用.gif](https://upload-images.jianshu.io/upload_images/2195446-8f31214a1a39bbd0.gif?imageMogr2/auto-orient/strip)
 
 **延展**： document.documentElement
 	1.  返回文档对象的根元素<html></html>（HTML）
@@ -61,12 +70,7 @@
 
 
 
-
-
-
-
-
-##   思路：
+## 思路：
 
 1.   对根目录:root设置三个CSS变量，分别对应颜色，内边距和模糊程度；
 
@@ -82,7 +86,6 @@
 
 7.   发现问题，改变颜色区域的input时，边框消失。这是因为当input的type为color时，它的value是颜色代码，不是数字，这部分input中也没有设置data-sizing，所以找不到suffix，返回undefined，而undefined加上颜色部分的this.value（颜色代码，typeof后发现是字符串），就会生成
     ![image.png](https://upload-images.jianshu.io/upload_images/2195446-77d37f0f9b2e294f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
  导致边框消失
 
 8.   解决这个问题：让suffix = this.dateset.sizing || ''     颜色字符串加上'' 不影响颜色读取
@@ -90,10 +93,12 @@
 
 
 ## 问题
-1.  颜色部分是让谁来调用？
+1.颜色部分是让谁来调用？
+
 答：是background。为什么是background？
 
-2.  模糊部分是谁来调用CSS变量
+2.模糊部分是谁来调用CSS变量
+
 答：![filter](https://upload-images.jianshu.io/upload_images/2195446-bdba717d77356940.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 **延展**：blur()
 	* 语法：blur(radius)
@@ -106,12 +111,14 @@
 
 ![过滤器函数](https://upload-images.jianshu.io/upload_images/2195446-44920e69668226a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-3. input的type为range时，不同的位置的拖动会带来怎样的值？
+3.input的type为range时，不同的位置的拖动会带来怎样的值？
+
 答：需要设置最小值min和最大值max，不同位置的值都在min与max之间，同时可以在input中设置value，代表默认的拖动位置
 ![input的type为range](https://upload-images.jianshu.io/upload_images/2195446-62d69ef20c63f843.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-4. input的type为color/range时，它的value是什么？
+4.input的type为color/range时，它的value是什么？
+
 答：input的type为color时，它的值就是颜色代码
 ![color](https://upload-images.jianshu.io/upload_images/2195446-035d130c6a42b1da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 input的type为range时，它的值就是数字
@@ -119,19 +126,25 @@ input的type为range时，它的值就是数字
 
 
 
-5. 为什么我在设置完颜色之后，还需要让鼠标hover在颜色条上才能变色？
+5.为什么我在设置完颜色之后，还需要让鼠标hover在颜色条上才能变色？
+
 答：因为我只设置了mousemove监听事件，所以只有放在input的颜色条块上，才会有变化。解决办法是再设置一个监听事件change，只要value一改变，立马就变换颜色
 
 
 
-6. 用户拖动range或者改变颜色时，是如何修改相应的input的？
+6.用户拖动range或者改变颜色时，是如何修改相应的input的？
+
 答：拖动range或者选择颜色，都会改变this.value，也就是input的value。我们通过setProperty找到根目录的CSS变量，然后将这个值传递给CSS变量，就会改变image的padding/blur/颜色
 
 
 7.NodeList和Array的区别
+
 NodeList可以使用的方法很少，在遍历方面更是只有forEach
+
 ![](https://upload-images.jianshu.io/upload_images/2195446-d09b9f249ca4525f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 Array有很多方法
+
 ![](https://upload-images.jianshu.io/upload_images/2195446-ed2462ca40d96137.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 

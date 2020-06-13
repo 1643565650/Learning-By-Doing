@@ -1,4 +1,4 @@
-## [在线地址](https://1643565650.github.io/Learning-By-Doing/J30-9%20console%E6%96%B9%E6%B3%95/inex-%E6%9D%8E%E8%A1%8C%E7%9F%A5.html)  
+## [在线地址](https://1643565650.github.io/Pure-JavaScript-Learning-JavaScript30/J30-9%20console%E6%96%B9%E6%B3%95/inex-%E6%9D%8E%E8%A1%8C%E7%9F%A5.html)  
 
 
 在浏览器中找到具体部分的DOM设置  

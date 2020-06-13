@@ -1,7 +1,7 @@
 # 实现效果
 ![时钟在线效果.gif](https://upload-images.jianshu.io/upload_images/2195446-255c94e7fe6bb82b.gif?imageMogr2/auto-orient/strip)
 
-[在线效果](https://1643565650.github.io/Learning-By-Doing/J30-2%20CSS%E6%97%B6%E9%92%9F/CSS%E6%97%B6%E9%92%9F.html)
+[在线效果](https://1643565650.github.io/Pure-JavaScript-Learning-JavaScript30/J30-2 CSS时钟/CSS时钟.html)
 
 
 # 需要的CSS知识
